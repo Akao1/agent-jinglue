@@ -1,0 +1,62 @@
+.workbench .page-head { margin-bottom:20px; }
+.workbench .page-head h1 { font-size:clamp(33px,4vw,52px); }
+.workbench-grid { display:grid; grid-template-columns:minmax(268px,324px) minmax(0,1fr); grid-template-areas:"tree case" "tree followup"; grid-template-rows:max-content 1fr; align-items:start; row-gap:14px; column-gap:20px; }
+.workbench-grid > #work-tree { grid-area:tree; }
+.work-case { min-width:0; grid-area:case; }
+.work-case-followup { min-width:0; grid-area:followup; display:grid; gap:14px; }
+.work-case-card,.work-references,.work-no-case { border:1px solid var(--line); border-radius:11px; background:var(--plate); }
+.work-case-card { border-top:3px solid var(--rail); padding:18px; }
+.work-case-header { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+.work-case-header h2 { margin-top:4px; font:700 clamp(26px,3vw,39px)/1.22 var(--serif); }
+.work-case-header h2:focus { outline:0; }
+.work-case-location { display:flex; align-items:center; flex-wrap:wrap; gap:8px; color:var(--muted); font-size:12px; }
+.work-case-location span { font:12px var(--mono); }
+.work-case-facts { display:flex; flex-wrap:wrap; gap:12px 24px; margin-top:11px; }
+.work-case-facts div { display:flex; align-items:baseline; gap:6px; }
+.work-case-facts dt { color:var(--muted); font-size:12px; }
+.work-case-facts dd { font-weight:650; }
+.work-next { margin-top:13px; padding:13px 0 0; border-top:1px solid var(--line); }
+.work-next h3 { margin-bottom:7px; font-size:15px; }
+.work-next .button { border-radius:6px; }
+.work-delivery p { color:var(--body); font-size:13px; }
+.work-delivery { margin-bottom:8px; }
+.work-delivery strong { display:flex; gap:6px; align-items:center; }
+.work-delivery p { margin-top:4px; }
+.work-blockers { list-style:none; padding:0; }
+.work-blockers li { display:flex; align-items:center; flex-wrap:wrap; gap:8px; }
+.work-blockers a { min-height:40px; display:inline-flex; align-items:center; gap:5px; color:var(--green); font-weight:650; }
+.work-blockers a:hover { text-decoration:underline; }
+.work-blockers a .ico { width:15px; }
+.work-references summary { cursor:pointer; padding:10px 14px; font-weight:650; }
+.work-references div { display:flex; flex-wrap:wrap; gap:8px 18px; border-top:1px solid var(--line); padding-inline:14px; }
+.work-no-case { padding:16px; }
+.work-back-to-tree { display:none; }
+@media (max-width: 850px) {
+  .workbench-grid { grid-template-columns:minmax(0,1fr); grid-template-areas:"case" "tree" "followup"; grid-template-rows:auto auto auto; gap:13px; }
+  .work-back-to-tree { display:inline-flex; margin-top:6px; padding:0; border:0; background:transparent; }
+}
+@media (max-width:520px) {
+  .work-case-card { padding:12px; }
+  .workbench .page-head { margin-bottom:12px; }
+}
+.top .more-nav { margin-top:12px; padding-top:9px; border-top:1px solid var(--rail-line); }
+.more-nav summary { display:flex; min-height:45px; align-items:center; gap:9px; padding:6px 12px; color:var(--rail-muted); cursor:pointer; list-style:none; }
+.more-nav summary::-webkit-details-marker { display:none; }
+.more-nav summary:hover,.more-nav:has([aria-current]) summary { color:var(--rail-text); background:var(--rail-hover); }
+.top .more-nav-links { gap:2px; }
+.top .more-nav-links a { min-height:39px; font-size:13px; }
+.top .more-nav-links a[data-page="audit"] { margin:0; }
+@media (max-width:900px) {
+  .bar { grid-template-columns:repeat(4,minmax(0,1fr)); overflow:visible; }
+  .brand { grid-column:1/-1; }
+  .top nav[aria-label="主导航"] { grid-column:1/4; grid-row:2; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); overflow:visible; }
+  .top nav[aria-label="主导航"] a,.more-nav summary { justify-content:center; padding-inline:3px; gap:4px; }
+  .top .more-nav { grid-column:4; grid-row:2; margin:0; padding:0; border:0; position:relative; }
+  .top .more-nav-links { position:absolute; top:100%; right:0; min-width:170px; display:grid; padding:6px; background:var(--rail); border:1px solid var(--rail-line); box-shadow:0 8px 22px var(--shadow); }
+  .top .more-nav-links a { justify-content:flex-start; }
+}
+@media (max-width:520px) {
+  .more-nav summary { font-size:12px; }
+  .more-nav summary .ico { width:14px; height:14px; }
+}
+.work-case-header h2 { scroll-margin-top:12px; }

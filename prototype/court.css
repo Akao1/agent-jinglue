@@ -1,0 +1,164 @@
+/* A surveyed city plan with real destinations and a single working desk. */
+:root {
+  --court-paper: #f5f2e9;
+  --court-sheet: #faf8f1;
+  --court-map: #e9dfc9;
+  --court-line: #d8cbb2;
+  --court-rule: #857657;
+  --court-ink: #242c2c;
+  --court-muted: #5c6259;
+  --court-pine: #263c37;
+  --court-red: #a3392e;
+  --court-red-dark: #77291f;
+  --court-overlay: #a3392e24;
+  --court-faded: #e8dfcc;
+  --court-plaque: #fff9ec;
+}
+.court-page {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(272px, .43fr);
+  grid-template-areas:"board desk" "directory desk";
+  gap:19px;
+  align-items:start;
+  color:var(--court-ink);
+}
+.court-board,.court-desk,.court-directory { min-width:0;background:var(--court-sheet);border:1px solid var(--court-line); }
+.court-board { grid-area:board; }
+.court-board-head {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  min-height:51px;
+  gap:12px;
+  padding:8px 15px;
+}
+.court-board-head h2,.court-directory h2 { margin:0;font:700 20px/1.25 var(--serif,var(--display)); }
+.court-board-head button { font-size:13px;min-height:36px;border:0;background:transparent;color:var(--court-ink); }
+.court-board-head button:hover { color:var(--court-red-dark); }
+.court-board-head button .ico { width:16px;height:16px; }
+.court-map-frame { background:var(--court-map);border-top:1px solid var(--court-line); }
+.court-svg { display:block;width:100%;height:auto;max-width:100%; }
+.court-mobile-plate { display:none; }
+.court-fallback-paper { fill:var(--court-map); }
+.court-fallback-wall { fill:none;stroke:var(--court-rule);stroke-width:2; }
+.court-fallback-road { fill:none;stroke:var(--court-rule);stroke-width:9;opacity:.4; }
+.court-fallback-roof { fill:var(--court-faded);stroke:var(--court-rule);stroke-width:2; }
+.court-fallback-ridge { fill:none;stroke:var(--court-rule);stroke-width:2; }
+.court-building { cursor:pointer; }
+.court-building-hit { fill:transparent;stroke:transparent;stroke-width:4; }
+.court-plaque { fill:var(--court-plaque);stroke:var(--court-rule);stroke-width:1.8; }
+.court-plot-label {
+  fill:var(--court-ink);
+  font:700 24px var(--sans,var(--font));
+  dominant-baseline:middle;
+  text-anchor:middle;
+}
+.court-building:is(:hover,:focus-visible,.is-selected) .court-building-hit { fill:var(--court-overlay);stroke:var(--court-red); }
+.court-building.is-selected .court-plaque { fill:var(--court-red-dark);stroke:var(--court-plaque);stroke-width:2; }
+.court-building.is-selected .court-plot-label { fill:var(--court-plaque); }
+.court-building:focus-visible { outline:2px solid var(--court-red-dark);outline-offset:2px; }
+
+.court-desk { grid-area:desk;padding:20px; }
+.court-desk-heading { border-left:3px solid var(--court-red);padding-left:11px; }
+.court-desk-zone { display:block;margin-bottom:5px;color:var(--court-muted);font-size:12px; }
+.court-desk h2 { margin:0;color:var(--court-ink);font:700 31px/1.1 var(--serif,var(--display));overflow-wrap:anywhere; }
+.court-desk h2:focus { outline-offset:4px; }
+.court-desk h2,.court-directory h2 { scroll-margin-top:88px; }
+.court-mission { margin:13px 0 16px;color:var(--court-muted);font-size:14px;line-height:1.65; }
+.court-rooms { display:grid;gap:0; }
+.court-actions .button,.court-side-room {
+  display:grid;
+  grid-template-columns:32px minmax(0,1fr) 16px;
+  align-items:center;
+  gap:9px;
+  width:100%;
+  min-height:53px;
+  padding:7px 9px;
+  border-radius:0;
+  text-align:left;
+  white-space:normal;
+}
+.court-actions .button { background:var(--court-pine);border-color:var(--court-pine);color:var(--court-plaque); }
+.court-actions .button.red { background:var(--court-red-dark);border-color:var(--court-red-dark); }
+.court-actions .button:hover { background:var(--court-red-dark);border-color:var(--court-red-dark);color:var(--court-plaque); }
+.court-side-room {
+  appearance:none;
+  border:0;
+  border-bottom:1px solid var(--court-line);
+  background:transparent;
+  color:var(--court-ink);
+  cursor:pointer;
+  font:inherit;
+}
+.court-side-room:is(:hover,:focus-visible) { color:var(--court-red-dark);background:var(--court-paper); }
+.court-rooms strong,.court-rooms small { display:block; }
+.court-rooms small { margin-bottom:2px;font-size:11px;font-weight:400;opacity:.9; }
+.court-rooms strong { font-size:13px;font-weight:650; }
+.court-rooms svg:not(.ico) { width:29px;height:29px;stroke:currentColor;fill:none;stroke-width:1.2;stroke-linejoin:round; }
+.court-rooms .ico { width:14px;height:14px; }
+.court-current { margin-top:17px; }
+.court-current > header { display:flex;align-items:center;justify-content:space-between;gap:8px; }
+.court-current h3 { margin:0;font-size:14px; }
+.court-current header span,.court-empty { color:var(--court-muted);font-size:12px; }
+.court-empty { margin:9px 0 0;line-height:1.55; }
+.court-current ul,.court-directory ul { margin:6px 0 0;padding:0;list-style:none; }
+.court-current a {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto auto;
+  align-items:center;
+  gap:5px;
+  min-height:44px;
+  padding:6px 0;
+  border-bottom:1px solid var(--court-line);
+}
+.court-current a strong,.court-current a small { display:block;overflow-wrap:anywhere; }
+.court-current a strong { font-size:13px; }
+.court-current a small { margin-top:2px;color:var(--court-muted);font-size:11px; }
+.court-current a:hover,.court-back:hover { color:var(--court-red-dark); }
+.court-current a > .badge { font-size:10px;white-space:normal;text-align:right; }
+.court-current a > .ico { width:13px;height:13px; }
+.court-boundary { margin-top:13px;padding-top:9px;border-top:1px solid var(--court-line);color:var(--court-muted);font-size:12px; }
+.court-boundary summary { cursor:pointer;min-height:26px; }
+.court-boundary p { margin:3px 0 0;line-height:1.55; }
+.court-back { display:inline-block;margin-top:18px;font-size:13px;text-decoration:underline; }
+
+.court-directory { grid-area:directory;padding:14px 15px 16px; }
+.court-directory-grid { display:grid;grid-template-columns:.52fr .86fr 1.2fr 1.42fr;gap:12px;margin-top:11px; }
+.court-directory-group { min-width:0;padding-top:9px;border-top:1px solid var(--court-line); }
+.court-directory-group h3 { margin:0;color:var(--court-muted);font-size:12px;line-height:1.5; }
+.court-directory-group ul { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 5px; }
+.court-directory-group:nth-child(-n+2) ul { grid-template-columns:minmax(0,1fr); }
+.court-directory a {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:3px;
+  min-height:34px;
+  padding:3px 4px;
+  border:1px solid transparent;
+  overflow-wrap:anywhere;
+  font-size:12px;
+}
+.court-directory a .ico { width:12px;height:12px;flex:none; }
+.court-directory a:is(:hover,[aria-current]) { color:var(--court-red-dark);border-color:var(--court-line);background:var(--court-paper); }
+
+.court-page :is(a,button,summary):focus-visible { outline:2px solid var(--court-red-dark);outline-offset:2px; }
+.court-actions .button:focus-visible { outline-offset:3px; }
+
+@media (max-width:1150px) {
+  .court-directory-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .court-directory-group:nth-child(-n+2) ul { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:860px) {
+  .court-page { grid-template-columns:minmax(0,1fr);grid-template-areas:"board" "desk" "directory";gap:12px; }
+  .court-desk { padding:16px; }
+  .court-directory a { min-height:44px; }
+  .court-board-head button { min-height:44px; }
+}
+@media (max-width:560px) {
+  .court-map-frame { display:none; }
+  .court-mobile-plate { display:block;aspect-ratio:2.5;background:var(--court-map) url(assets/court.webp) center 27% / cover no-repeat; }
+  .court-board-head { padding:4px 12px; }
+  .court-board-head h2 { font-size:18px; }
+  .court-desk h2 { font-size:27px; }
+}

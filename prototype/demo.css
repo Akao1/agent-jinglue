@@ -1,0 +1,22 @@
+/* Status catalog is an index of executable demo routes, not a second state store. */
+.demo-head { display:flex; align-items:center; justify-content:space-between; gap:14px; margin-block:-8px 16px; color:var(--muted); }
+.demo-tabs,.demo-crumbs { display:flex; flex-wrap:wrap; gap:4px 10px; margin-block-end:14px; }
+.demo-tabs { border-bottom:1px solid var(--line); }
+.demo-tabs a { min-height:42px; display:inline-flex; align-items:center; padding:4px 8px; color:var(--muted); font-weight:650; border-bottom:2px solid transparent; }
+.demo-tabs a:is([aria-current],:hover) { color:var(--accent-deep); }
+.demo-tabs a[aria-current] { border-bottom-color:var(--accent); }
+.demo-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; align-items:start; }
+.demo-grid:has(.demo-section:only-child) { grid-template-columns:minmax(0,760px); }
+.demo-section { min-width:0; background:var(--plate); border:1px solid var(--line); border-radius:10px; }
+.demo-section header { padding:13px 16px; display:flex; align-items:center; justify-content:space-between; gap:10px; border-bottom:1px solid var(--line); }
+.demo-section header h2 { font-size:23px; }
+.demo-section header span,.demo-section small { color:var(--muted); font-size:12px; }
+.demo-section ul { padding:0; list-style:none; }
+.demo-section li + li { border-top:1px solid var(--line); }
+.demo-section li a { padding:9px 15px; min-height:54px; display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:10px; }
+.demo-section li a:hover { background:var(--soft); }
+.demo-section li a:focus-visible { outline-offset:-2px; }
+.demo-section small { display:block; line-height:1.4; margin-top:2px; }
+.demo-section .ico { width:14px; color:var(--green); }
+@media (max-width:750px) { .demo-grid { grid-template-columns:minmax(0,1fr); } }
+@media (max-width:500px) { .demo-head { align-items:flex-start; flex-direction:column; } .demo-tabs a { padding-inline:3px; font-size:12px; } }

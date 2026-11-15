@@ -1,0 +1,123 @@
+/* 省治驻地和辖区概览 */
+:root { --province-seat-shade:#263b345c; --province-seat-rule:#ffffff47; }
+
+.province-seat-location {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  min-height:146px;
+  padding:21px;
+  margin-bottom:17px;
+  border-radius:12px;
+  color:var(--rail-text);
+  background:
+    linear-gradient(90deg,var(--rail) 8%,var(--rail) 37%,var(--province-seat-shade)),
+    var(--rail) url("assets/atlas.webp") right 64% / 75% auto no-repeat;
+}
+.province-seat-location-title { display:flex;align-items:center;gap:14px;min-width:0; }
+.province-seat-glyph {
+  display:grid;
+  flex:none;
+  place-items:center;
+  width:53px;
+  height:53px;
+  border:1px solid var(--province-seat-rule);
+  border-radius:7px;
+}
+.province-seat-glyph .ico { width:26px;height:26px; }
+.province-seat-location p { margin:0 0 4px;color:var(--rail-muted);font-size:13px; }
+.province-seat-location h2 {
+  margin:0;
+  color:inherit;
+  overflow-wrap:anywhere;
+  font:700 clamp(24px,3.2vw,35px)/1.2 var(--serif);
+}
+.province-seat-location-link {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  flex:none;
+  min-height:44px;
+  padding:8px 12px;
+  border:1px solid var(--province-seat-rule);
+  border-radius:6px;
+  color:var(--rail-text);
+  background:var(--rail);
+  font-size:13px;
+  font-weight:650;
+}
+.province-seat-location-link .ico { width:14px;height:14px; }
+.province-seat-location-link:hover { color:var(--white);background:var(--rail-hover); }
+.province-seat-location-link:focus-visible { outline-color:var(--white); }
+
+.province-seat-layout {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(260px,.53fr);
+  gap:17px;
+  align-items:start;
+}
+.province-seat-sheet,.province-seat-empty {
+  min-width:0;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:var(--plate);
+}
+.province-seat-sheet > header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  padding:14px 17px;
+  border-bottom:1px solid var(--line);
+}
+.province-seat-sheet h2,.province-seat-empty h2 { margin:0;font:700 21px/1.3 var(--serif); }
+.province-seat-sheet > header span,.province-seat-note,.province-seat-districts small { color:var(--muted);font-size:13px; }
+.province-seat-districts { margin:0;padding:0;list-style:none; }
+.province-seat-districts li {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(125px,.85fr);
+  align-items:center;
+  gap:4px 14px;
+  padding:10px 17px;
+  border-bottom:1px solid var(--line);
+}
+.province-seat-district-name {
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  min-height:39px;
+  font-size:15px;
+  font-weight:700;
+}
+.province-seat-district-name:hover { color:var(--green);text-decoration:underline; }
+.province-seat-district-name .ico { width:13px;height:13px;color:var(--muted); }
+.province-seat-districts small { display:block; }
+.province-seat-districts .text-link { min-height:44px;font-size:13px; }
+.province-seat-local-mark { margin-left:8px;padding:3px 6px;color:var(--green);background:var(--green-soft);font-size:11px; }
+.province-seat-rules ol { margin:12px 0;padding:0 18px 0 37px; }
+.province-seat-rules li { padding:5px 0;color:var(--body);font-size:14px;line-height:1.6; }
+.province-seat-rules li::marker { color:var(--green); }
+.province-seat-boundary {
+  margin:0;
+  padding:13px 17px;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.6;
+}
+.province-seat-sheet > .province-seat-note { margin:0;padding:14px 17px; }
+.province-seat-empty { padding:18px;margin-bottom:17px; }
+.province-seat-empty p { margin:7px 0 0;color:var(--muted);font-size:14px; }
+.province-seat-empty .button { margin-top:12px; }
+
+@media (max-width:760px) {
+  .province-seat-layout { grid-template-columns:minmax(0,1fr);gap:13px; }
+}
+@media (max-width:510px) {
+  .province-seat-location { min-height:126px;align-items:flex-start;flex-direction:column;gap:8px;padding:14px; }
+  .province-seat-glyph { width:38px;height:38px; }
+  .province-seat-glyph .ico { width:20px;height:20px; }
+  .province-seat-location-link { align-self:flex-end; }
+  .province-seat-districts li { grid-template-columns:minmax(0,1fr); }
+}

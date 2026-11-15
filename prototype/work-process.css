@@ -1,0 +1,33 @@
+.work-process { min-width: 0; }
+.work-process > h3 { margin: 0 0 8px; color: var(--ink); font-size: 16px; }
+.work-process-tree,
+.work-process-group ol,
+.work-process-branches,
+.work-process-dependencies ul { list-style: none; padding: 0; margin: 0; }
+.work-process-group summary { min-height: 36px; padding: 6px 8px; color: var(--muted); font-size: 13px; cursor: pointer; }
+.work-process-group summary:hover { color: var(--green); }
+.work-process-group ol { padding-inline-start: 14px; }
+.work-process-node { position: relative; min-width: 0; }
+.work-process-node:not(:last-child)::before { position: absolute; inset: 15px auto -15px 11px; content: ""; width: 1px; background: var(--line); }
+.work-process-row { position: relative; min-height: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 9px; padding: 4px 8px 4px 5px; color: var(--body); font-size: 13px; }
+.work-process-dot { display: grid; place-items: center; width: 13px; height: 13px; flex: none; border: 1px solid var(--line-strong); border-radius: 50%; background: var(--plate); }
+.work-process-dot .ico { width: 9px; height: 9px; stroke-width: 2.2; }
+.work-process-node[data-state="past"] .work-process-dot { border-color: var(--green); color: var(--green); }
+.work-process-node[data-state="future"] .work-process-row { color: var(--muted); }
+.work-process-row[aria-current] { border-radius: 6px; background: var(--green-soft); color: var(--green); font-weight: 650; }
+.work-process-row[aria-current] .work-process-dot { border-color: var(--green); background: var(--green); color: var(--white); }
+.work-process-actor { font-size: 12px; }
+.work-process-state { margin-inline-start: auto; color: var(--muted); font-size: 12px; font-weight: 400; text-align: end; }
+.work-process-row[aria-current] .work-process-state { color: var(--green); font-weight: 650; }
+.work-process-branches { position: relative; margin: 0 0 5px 11px; padding-inline-start: 13px; border-inline-start: 1px solid var(--line); }
+.work-process-return { position: relative; display: grid; gap: 1px; padding: 5px 0 6px; color: var(--body); font-size: 12px; overflow-wrap: anywhere; }
+.work-process-return::before { position: absolute; inset: 13px auto auto -12px; width: 8px; height: 1px; content: ""; background: var(--line); }
+.work-process-return strong { color: var(--accent-deep); }
+.work-process-dependencies { margin-bottom: 8px; border: 1px solid var(--line); border-radius: 7px; background: var(--plate); }
+.work-process-dependencies h4 { margin: 0; padding: 6px 10px 0; color: var(--muted); font-size: 12px; }
+.work-process-dependencies li { display: flex; flex-wrap: wrap; align-items: center; gap: 1px 8px; padding: 1px 10px; color: var(--muted); font-size: 12px; }
+.work-process-dependencies li + li { border-top: 1px solid var(--line); }
+.work-process-dependencies li > a { display: inline-flex; align-items: center; min-height: 36px; font-size: 13px; color: var(--green); font-weight: 650; }
+.work-process-dependencies li > a:hover { text-decoration: underline; }
+.work-process-dependencies li > span:last-child { margin-inline-start: auto; }
+.work-process-dependencies .work-process-wait { color: var(--accent-deep); }

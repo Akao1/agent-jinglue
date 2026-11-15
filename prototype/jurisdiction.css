@@ -1,0 +1,168 @@
+/* 府州治所与工作区归属 */
+:root {
+  --jurisdiction-ink-veil:#263b345e;
+  --jurisdiction-border:#ffffff42;
+}
+
+.jurisdiction-crumbs {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px;
+  min-height:34px;
+  margin-bottom:8px;
+  color:var(--muted);
+  font-size:13px;
+}
+.jurisdiction-crumbs .text-link { min-height:34px;font-size:13px; }
+.jurisdiction-crumbs > .ico { width:13px;height:13px; }
+.jurisdiction-heading {
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:12px;
+  min-width:0;
+  margin-bottom:22px;
+}
+.jurisdiction-heading h1 { margin:0;overflow-wrap:anywhere;font:700 clamp(32px,5vw,55px)/1.13 var(--serif); }
+.jurisdiction-heading h1:focus { outline:none; }
+.jurisdiction-heading p { margin:7px 0 0;color:var(--muted);font-size:13px; }
+.jurisdiction-heading .button { min-height:42px;flex-shrink:0; }
+
+.jurisdiction-index { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px; }
+.jurisdiction-region,.jurisdiction-sheet,.jurisdiction-empty {
+  min-width:0;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:var(--plate);
+}
+.jurisdiction-region h2,.jurisdiction-sheet > header {
+  margin:0;
+  padding:14px 17px;
+  border-bottom:1px solid var(--line);
+}
+.jurisdiction-region h2,.jurisdiction-sheet h2,.jurisdiction-empty h2 {
+  font:700 21px/1.3 var(--serif);
+  color:var(--ink);
+}
+.jurisdiction-region ul,.jurisdiction-rules,.jurisdiction-associated ul { padding:0;margin:0;list-style:none; }
+.jurisdiction-region li + li { border-top:1px solid var(--line); }
+.jurisdiction-region a {
+  display:grid;
+  grid-template-columns:35px minmax(0,1fr) auto;
+  align-items:center;
+  gap:10px;
+  min-height:70px;
+  padding:10px 15px;
+}
+.jurisdiction-row-icon {
+  display:grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  border-radius:6px;
+  color:var(--green);
+  background:var(--green-soft);
+}
+.jurisdiction-region a > .ico { width:14px;height:14px;color:var(--muted); }
+.jurisdiction-region strong,.jurisdiction-region small { display:block;overflow-wrap:anywhere; }
+.jurisdiction-region strong { color:var(--ink);font-size:15px; }
+.jurisdiction-region small { margin-top:3px;color:var(--muted);font-size:12px; }
+.jurisdiction-region a:hover { background:var(--paper); }
+.jurisdiction-region a:focus-visible { outline-offset:-3px; }
+.jurisdiction-region-title { display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); }
+.jurisdiction-region-title h2 { border-bottom:0; }
+.jurisdiction-region-title a { display:inline-flex; align-items:center; min-height:42px; padding:5px 12px; color:var(--green); font-size:13px; font-weight:650; }
+
+.jurisdiction-registration {
+  display:flex;
+  align-items:center;
+  min-height:116px;
+  margin-bottom:17px;
+  padding:19px 22px;
+  border-radius:12px;
+  color:var(--rail-text);
+  background:
+    linear-gradient(90deg,var(--rail) 0%,var(--rail) 40%,var(--jurisdiction-ink-veil) 100%),
+    var(--rail) url("assets/atlas.webp") right 54% / 66% auto no-repeat;
+}
+.jurisdiction-registration > div { display:flex;align-items:center;gap:14px;min-width:0; }
+.jurisdiction-registration p { margin:0 0 4px;color:var(--rail-muted);font-size:12px; }
+.jurisdiction-registration h2 {
+  margin:0;
+  color:inherit;
+  overflow-wrap:anywhere;
+  font:700 clamp(22px,3vw,31px)/1.25 var(--serif);
+}
+.jurisdiction-registration-seal {
+  display:grid;
+  place-items:center;
+  width:46px;
+  height:46px;
+  flex:none;
+  border:1px solid var(--jurisdiction-border);
+  border-radius:7px;
+}
+.jurisdiction-registration-seal .ico { width:23px;height:23px; }
+.jurisdiction-layout {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(260px,.52fr);
+  gap:17px;
+  align-items:start;
+}
+.jurisdiction-rules li {
+  display:grid;
+  grid-template-columns:37px minmax(0,1fr);
+  align-items:start;
+  gap:12px;
+  padding:16px 17px;
+}
+.jurisdiction-rules li + li { border-top:1px solid var(--line); }
+.jurisdiction-rule-no {
+  display:grid;
+  place-items:center;
+  width:34px;
+  height:32px;
+  border:1px solid var(--line);
+  border-radius:5px;
+  color:var(--green);
+  background:var(--green-soft);
+  font-size:12px;
+  font-variant-numeric:tabular-nums;
+}
+.jurisdiction-rules h3,.jurisdiction-associated h3 {
+  margin:0;
+  color:var(--ink);
+  font:700 17px/1.4 var(--sans);
+}
+.jurisdiction-rules p,.jurisdiction-empty p { margin:5px 0 0;color:var(--body);font-size:14px;line-height:1.65; }
+.jurisdiction-record dl { margin:0; }
+.jurisdiction-record dl > div { padding:12px 16px;border-bottom:1px solid var(--line); }
+.jurisdiction-record dt { margin-bottom:5px;color:var(--muted);font-size:12px; }
+.jurisdiction-record dd { margin:0;color:var(--ink);overflow-wrap:anywhere; }
+.jurisdiction-record code { font-size:12px; }
+.jurisdiction-associated { padding:12px 16px; }
+.jurisdiction-associated h3 { font-size:13px; }
+.jurisdiction-associated .text-link,.jurisdiction-current { min-height:38px;font-size:13px; }
+.jurisdiction-current { display:inline-flex;align-items:center;gap:6px;color:var(--muted); }
+.jurisdiction-associated .ico { width:15px;height:15px; }
+.jurisdiction-empty { padding:19px; }
+.jurisdiction-empty .button { margin-top:12px; }
+
+@media (max-width:1000px) {
+  .jurisdiction-index { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:760px) {
+  .jurisdiction-heading { margin-bottom:16px; }
+  .jurisdiction-layout { grid-template-columns:minmax(0,1fr);gap:13px; }
+}
+@media (max-width:520px) {
+  .jurisdiction-crumbs { margin-bottom:4px; }
+  .jurisdiction-heading { align-items:flex-start;flex-direction:column;gap:8px; }
+  .jurisdiction-index { grid-template-columns:minmax(0,1fr);gap:12px; }
+  .jurisdiction-registration { min-height:94px;padding:13px; }
+  .jurisdiction-registration > div { gap:8px; }
+  .jurisdiction-registration-seal { width:31px;height:34px; }
+  .jurisdiction-registration-seal .ico { width:18px;height:18px; }
+  .jurisdiction-registration h2 { font-size:21px; }
+}

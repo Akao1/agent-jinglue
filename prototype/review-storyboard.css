@@ -1,0 +1,77 @@
+.review-storyboard {
+  min-width: 0;
+  margin-block: 13px 16px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+}
+.review-storyboard-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 5px 14px;
+  margin-block-end: 9px;
+}
+.review-storyboard-head h3 { margin: 0; color: var(--ink); font-weight: 750; }
+.review-storyboard-head p { display: flex; flex-wrap: wrap; align-items: center; gap: 5px 9px; color: var(--muted); font-size: 12px; }
+.review-storyboard-head p span:first-child { font-family: var(--mono); }
+.review-storyboard-tag { padding: 2px 6px; border-radius: 4px; background: var(--green-soft); color: var(--green); font-weight: 700; }
+.review-storyboard-shots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(min(100%,176px),1fr));
+  align-items: stretch;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.review-storyboard-shots > li { min-width: 0; }
+.review-storyboard-shot {
+  height: 100%;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--plate);
+  overflow: hidden;
+}
+.review-storyboard-image { position: relative; background: var(--rail); }
+.review-storyboard-image svg {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/9;
+  font-family: var(--sans);
+}
+.review-storyboard-image > span {
+  position: absolute;
+  inset: 6px auto auto 6px;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: var(--rail);
+  color: var(--rail-text);
+  font: 11px/1.5 var(--mono);
+}
+.review-storyboard-shot figcaption { min-width: 0; padding: 7px 8px 9px; }
+.review-storyboard-shot h4 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2px 6px;
+  margin: 0;
+  color: var(--ink);
+  font-size: 13px;
+}
+.review-storyboard-shot h4 span { color: var(--muted); font-size: 11px; font-weight: 500; white-space: nowrap; }
+.review-storyboard-shot .review-storyboard-caption { margin: 3px 0 6px; color: var(--green); font-size: 12px; font-weight: 700; }
+.review-storyboard-shot dl { display: grid; gap: 4px; }
+.review-storyboard-shot dl div { display: grid; grid-template-columns: auto minmax(0,1fr); gap: 5px; }
+.review-storyboard-shot dt { color: var(--muted); font-size: 11px; }
+.review-storyboard-shot dd { color: var(--body); font-size: 11px; line-height: 1.45; overflow-wrap: anywhere; }
+@media (max-width: 560px) {
+  .review-storyboard { padding: 8px; }
+  .review-storyboard-shots { grid-template-columns: minmax(0,1fr); }
+  .review-storyboard-shot { display: grid; grid-template-columns: 31% minmax(0,1fr); align-items: start; }
+  .review-storyboard-image { align-self: stretch; display: grid; place-items: center; }
+  .review-storyboard-image > span { inset: 4px auto auto 4px; }
+}

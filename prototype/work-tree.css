@@ -1,0 +1,129 @@
+.work-tree {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--plate);
+}
+.work-tree-head {
+  padding: 13px 14px 11px;
+  border-bottom: 1px solid var(--line);
+}
+.work-tree-head h2 {
+  font-family: var(--display);
+  font-size: 21px;
+  margin: 0 0 10px;
+}
+.work-tree-filters {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 3px;
+  padding: 3px;
+  border-radius: 7px;
+  background: var(--soft);
+}
+.work-tree-filters a {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  min-height: 37px;
+  padding: 5px 3px;
+  border-radius: 5px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 650;
+}
+.work-tree-filters a[aria-current] {
+  background: var(--plate);
+  color: var(--rail);
+  box-shadow: 0 1px 2px var(--shadow);
+}
+.work-tree-filters a:hover { color: var(--accent-deep); }
+.work-tree-filter-count {
+  font-size: 11px;
+  color: var(--accent-deep);
+  background: var(--accent-soft);
+  border-radius: 4px;
+  padding-inline: 5px;
+  font-variant-numeric: tabular-nums;
+}
+.work-tree-items,.work-tree-districts,.work-tree-leaves {
+  padding: 0;
+  list-style: none;
+}
+.work-tree-items { padding: 7px 8px 10px; }
+.work-tree-items > li + li { border-top: 1px solid var(--line); }
+.work-tree-branch > summary {
+  display: grid;
+  grid-template-columns: 14px minmax(0,1fr) auto;
+  align-items: center;
+  gap: 7px;
+  min-height: 42px;
+  padding: 6px 7px;
+  border-radius: 5px;
+  list-style: none;
+  cursor: pointer;
+  color: var(--ink);
+}
+.work-tree-branch > summary::-webkit-details-marker { display: none; }
+.work-tree-branch > summary:hover,.work-tree-leaf:hover { background: var(--soft); }
+.work-tree-branch > summary:focus-visible,.work-tree-leaf:focus-visible { outline-offset: -2px; }
+.work-tree-province > summary { font-weight: 700; }
+.work-tree-district > summary {
+  min-height: 39px;
+  color: var(--body);
+  font-size: 13px;
+  font-weight: 650;
+}
+.work-tree-toggle,.work-tree-toggle .ico {
+  display: block;
+  width: 13px;
+  height: 13px;
+  color: var(--muted);
+}
+.work-tree-branch[open] > summary .work-tree-toggle { transform: rotate(90deg); }
+.work-tree-count {
+  color: var(--muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.work-tree-districts,.work-tree-leaves {
+  margin-inline-start: 11px;
+  padding-inline-start: 7px;
+  border-inline-start: 1px solid var(--line);
+}
+.work-tree-districts { margin-block-end: 5px; }
+.work-tree-leaves { margin-block-end: 4px; }
+.work-tree-leaf {
+  display: grid;
+  grid-template-columns: 13px minmax(0,1fr) auto;
+  align-items: center;
+  gap: 6px;
+  min-height: 43px;
+  padding: 5px 7px;
+  border-inline-start: 2px solid transparent;
+  border-radius: 5px;
+  color: var(--body);
+  font-size: 13px;
+}
+.work-tree-leaf-title { line-height: 1.4; overflow-wrap: anywhere; }
+.work-tree-leaf > .ico { width: 13px; height: 13px; color: var(--muted); }
+.work-tree-leaf .badge { padding: 3px 5px; font-size: 11px; }
+.work-tree-leaf .badge .ico { display: none; }
+.work-tree-leaf[aria-current] {
+  border-inline-start-color: var(--accent);
+  background: var(--green-soft);
+  color: var(--ink);
+  font-weight: 700;
+}
+.work-tree-empty {
+  padding: 18px 14px;
+  color: var(--muted);
+}
+@media (min-width: 901px) {
+  .work-tree-items { max-height: 58vh; overflow-y: auto; }
+}
+@media (max-width: 520px) {
+  .work-tree-head { padding: 11px 12px 9px; }
+  .work-tree-filters a,.work-tree-branch > summary,.work-tree-leaf { min-height: 44px; }
+}

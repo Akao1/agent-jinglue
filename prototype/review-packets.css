@@ -1,0 +1,35 @@
+.review-case { grid-template-columns:minmax(0,1fr) minmax(310px,.48fr); grid-template-areas:"material decision" "records decision"; grid-template-rows:max-content 1fr; gap:16px 20px; }
+.review-doc { grid-area:material; border-top:3px solid var(--rail); border-radius:11px; }
+.review-side { grid-area:decision; display:grid; gap:13px; min-width:0; }
+.review-records { grid-area:records; min-width:0; }
+.review-records > .flow-band { margin-top:0; }
+.review-side .docket-decision { border-radius:11px; }
+.review-doc-header { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding-bottom:12px; border-bottom:1px solid var(--line); }
+.review-doc-header p { color:var(--muted); font-size:12px; }
+.review-doc-header h2 { margin:5px 0 0; }
+.review-doc-header > span { color:var(--green); background:var(--green-soft); border-radius:4px; padding:3px 7px; white-space:nowrap; font-size:12px; }
+.review-artifact { padding:13px 0; }
+.review-artifact p { line-height:1.7; }
+.review-sources { border-top:1px solid var(--line); margin-top:14px; padding-top:12px; }
+.review-sources h3,.review-delivery-copy h4 { margin:0 0 5px; font-size:14px; }
+.review-sources ul { padding:0; list-style:none; }
+.review-sources li { display:flex; flex-wrap:wrap; gap:5px 10px; align-items:center; border-bottom:1px solid var(--line); }
+.review-sources small { color:var(--muted); font-size:12px; }
+.review-history,.review-reference { border:1px solid var(--line); border-radius:7px; background:var(--plate); }
+.review-history { margin-top:14px; }
+.review-history summary,.review-reference summary { padding:10px 12px; cursor:pointer; font-weight:650; }
+.review-history article,.review-history .form { padding:10px 12px; border-top:1px solid var(--line); }
+.review-reference .inspector { border:0; padding-top:8px; }
+.review-doc h2:focus { outline:none; }
+.review-material-form .button { justify-self:start; }
+.review-delivery-copy { margin-block:10px; padding:10px; background:var(--soft); border:1px solid var(--line); border-radius:6px; }
+.review-delivery-copy p + p { margin-top:5px; }
+.review-delivery-editor { margin-top:10px; }
+.review-delivery-editor .actions { margin-top:9px; }
+@media (max-width:900px) { .review-case { grid-template-columns:minmax(0,1fr); grid-template-areas:"material" "decision" "records"; grid-template-rows:auto; } }
+.review-materials { grid-area:material; display:grid; gap:13px; min-width:0; }
+.review-materials .review-doc { grid-area:auto; }
+.review-delivered { border-radius:11px; border-top:3px solid var(--green); }
+.county-selection .review-storyboard-shots { grid-template-columns:minmax(0,1fr); }
+.county-selection .review-storyboard-shot { display:grid; grid-template-columns:31% minmax(0,1fr); }
+.county-selection .review-storyboard-image { display:grid; place-items:center; }

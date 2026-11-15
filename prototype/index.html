@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="经略的可点击原型，从王朝版图查回任务与案卷。">
+  <title>经略｜中枢、王朝版图与京城衙署</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="realm.css">
+  <link rel="stylesheet" href="center.css">
+  <link rel="stylesheet" href="experience.css">
+  <link rel="stylesheet" href="court.css">
+  <link rel="stylesheet" href="county-map.css">
+  <link rel="stylesheet" href="county.css">
+  <link rel="stylesheet" href="jurisdiction.css">
+  <link rel="stylesheet" href="province-seat.css">
+  <link rel="stylesheet" href="execution-desk.css">
+  <link rel="stylesheet" href="demo.css">
+  <link rel="stylesheet" href="work-tree.css">
+  <link rel="stylesheet" href="work-process.css">
+  <link rel="stylesheet" href="workbench.css">
+  <link rel="stylesheet" href="review-storyboard.css">
+  <link rel="stylesheet" href="review-packets.css">
+  <script defer src="flow.js"></script>
+  <script defer src="domain.js"></script>
+  <script defer src="realm.js"></script>
+  <script defer src="center.js"></script>
+  <script defer src="court-offices.js"></script>
+  <script defer src="experience.js"></script>
+  <script defer src="court.js"></script>
+  <script defer src="county-map.js"></script>
+  <script defer src="county.js"></script>
+  <script defer src="jurisdiction.js"></script>
+  <script defer src="province-seat.js"></script>
+  <script defer src="demo-cases.js"></script>
+  <script defer src="execution-desk.js"></script>
+  <script defer src="demo.js"></script>
+  <script defer src="work-tree.js"></script>
+  <script defer src="work-process.js"></script>
+  <script defer src="workbench.js"></script>
+  <script defer src="review-storyboard.js"></script>
+  <script defer src="review-packets.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3zM9 3v15m6-12v15"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M2 13h4l3-7 4 12 3-6h6"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H5V3h2m7 0v6h5M8 13h8m-8 4h6"/></symbol>
+    <symbol id="i-watch" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="2.6"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6c-3-2-6-2.5-9-2v15c3-.5 6 0 9 2 3-2 6-2.5 9-2V4c-3-.5-6 0-9 2zm0 0v15"/></symbol>
+    <symbol id="i-week" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="1"/><path d="M8 3v4m8-4v4M4 10h16m-11 5h6"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/><path class="knob" d="M8 5v4m8 1v4m-6 1v4"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="5.5"/><path d="m15 15 5 5"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M4 6h.1M4 12h.1M4 18h.1"/></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="6" y="11" width="12" height="9" rx="1"/><path d="M9 11V8a3 3 0 0 1 6 0v3"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6h7l2 3h9v11H3z"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M4 9h16v11H4zM3 5h18v4H3zm6 8h6"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M19 9c0 5-7 11-7 11S5 14 5 9a7 7 0 1 1 14 0z"/><circle cx="12" cy="9" r="2"/></symbol>
+    <symbol id="i-center" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="8"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></symbol>
+    <symbol id="i-court" viewBox="0 0 24 24"><path d="M2 9 12 3l10 6M4 10h16M5 20V10m14 0v10M2 21h20M9 20v-7h6v7"/></symbol>
+  </svg>
+  <a class="skip-link" href="#app">跳到工作区</a>
+  <header class="top">
+    <div class="bar">
+      <a href="#center" class="brand" aria-label="经略，返回中枢"><span class="seal" aria-hidden="true">經<br>略</span><span>经略<small>三省六部</small></span></a>
+      <nav aria-label="主导航">
+        <a href="#center" data-page="center"><svg class="ico" aria-hidden="true"><use href="#i-center"/></svg><span>中枢</span></a>
+        <a href="#atlas" data-page="atlas"><svg class="ico" aria-hidden="true"><use href="#i-map"/></svg><span>王朝版图</span></a>
+        <a href="#court" data-page="court"><svg class="ico" aria-hidden="true"><use href="#i-court"/></svg><span>京城衙署</span></a>
+      </nav>
+      <details class="more-nav">
+        <summary><svg class="ico" aria-hidden="true"><use href="#i-list"/></svg><span>更多</span></summary>
+        <nav class="more-nav-links" aria-label="更多功能">
+          <a href="#audit" data-page="audit"><svg class="ico" aria-hidden="true"><use href="#i-watch"/></svg>御史巡按</a>
+          <a href="#history" data-page="history"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg>国史馆</a>
+          <a href="#weekly" data-page="weekly"><svg class="ico" aria-hidden="true"><use href="#i-week"/></svg>综合周报</a>
+          <a href="#jurisdiction"><svg class="ico" aria-hidden="true"><use href="#i-court"/></svg>治所与规则</a>
+          <a href="#demo" data-page="demo"><svg class="ico" aria-hidden="true"><use href="#i-activity"/></svg>演练与状态样例</a>
+          <a href="#settings" data-page="settings"><svg class="ico" aria-hidden="true"><use href="#i-settings"/></svg>执行者与设置</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+  <div class="utility"><div class="frame utility-bar">
+    <span class="workspace-label"><svg class="ico" aria-hidden="true"><use href="#i-folder"/></svg>演示工作区</span>
+    <div class="top-actions">
+      <a href="#search" class="utility-search" aria-label="搜索案卷"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg><span>搜索案卷</span></a>
+      <a href="#new" class="button primary"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg>交办任务</a>
+    </div>
+  </div></div>
+  <main class="frame" id="app" tabindex="-1">
+    <div class="page-head"><h1>经略中枢</h1><span class="mode">演示工作区</span></div>
+    <section class="sheet"><p>启用 JavaScript 后可进入中枢、王朝版图和京城衙署。</p></section>
+  </main>
+  <p class="toast" id="announcement" role="status" aria-live="polite"></p>
+</body>
+</html>
+

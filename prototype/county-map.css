@@ -1,0 +1,115 @@
+/* 县域图。其余版图样式由各级页面保管。 */
+.county-cartography {
+  position: relative;
+  isolation: isolate;
+  background: #e9e0c8;
+}
+.county-cartography::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px solid #4c524946;
+  pointer-events: none;
+}
+.county-chart { display: block; width: 100%; height: auto; }
+.county-backdrop { pointer-events: none; }
+.county-backdrop image { opacity: .73; }
+.county-region, .county-mark {
+  --county-fill: #8eb3a0;
+  --county-edge: #456352;
+  --county-ink: #28493b;
+}
+.county-chart [data-tone="complete"] { --county-fill: #91ae91; --county-edge: #4c7053; --county-ink: #2c5038; }
+.county-chart [data-tone="approval"] { --county-fill: #d9a086; --county-edge: #8d4438; --county-ink: #822d25; }
+.county-chart [data-tone="review"] { --county-fill: #dec49a; --county-edge: #815f3d; --county-ink: #694b28; }
+.county-chart [data-tone="blocked"] { --county-fill: #b9b5aa; --county-edge: #64675e; --county-ink: #444a44; }
+.county-chart [data-tone="ready"] { --county-fill: #a2bfbb; --county-edge: #456c66; --county-ink: #284f49; }
+.county-region { cursor: pointer; outline: none; }
+.county-boundary {
+  fill: var(--county-fill);
+  fill-opacity: .5;
+  stroke: var(--county-edge);
+  stroke-width: 1.05;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  transition: fill-opacity 140ms ease;
+}
+.county-hatch {
+  fill: url(#county-locked-hatch);
+  stroke: none;
+  pointer-events: none;
+}
+.county-region[aria-pressed="true"] .county-boundary {
+  fill-opacity: .71;
+  stroke: var(--county-ink);
+  stroke-width: 2.45;
+}
+.county-region:is(:hover,:focus-visible) .county-boundary {
+  fill-opacity: .82;
+  stroke: #812c25;
+  stroke-width: 2.65;
+}
+.county-region:focus-visible .county-boundary { stroke-dasharray: 5 2; }
+.county-annotations, .county-dependencies, .county-north { pointer-events: none; }
+.county-mark { text-anchor: middle; }
+.county-mark circle { fill: var(--county-ink); stroke: #fbf4df; stroke-width: 1.6; }
+.county-mark--selected circle { r: 6px; stroke-width: 2.3; }
+.county-mark text {
+  fill: #24372d;
+  stroke: #f5ecda;
+  stroke-width: 3.7px;
+  stroke-linejoin: round;
+  paint-order: stroke fill;
+}
+.county-mark .county-name { font: 700 21px var(--display); }
+.county-mark .county-stage { font: 600 13px var(--font); fill: var(--county-ink); }
+.county-mark--selected .county-name { fill: var(--county-ink); }
+.county-route-halo, .county-route {
+  fill: none;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+.county-route-halo { stroke: #faf0d6; stroke-width: 4.4; }
+.county-route { stroke: #943b31; stroke-width: 1.75; stroke-dasharray: 3 3; }
+.county-route--ready { stroke: #28584a; }
+.county-north { fill: #faf1db; stroke: #52594c; stroke-width: 1.2; }
+.county-north path { fill: #52594c; stroke-width: 1.4; }
+.county-north text { fill: #404a40; stroke: none; font: 700 14px var(--display); text-anchor: middle; }
+.county-network {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 1px;
+  padding: 1px;
+  background: #ddd5c6;
+  margin: 0;
+  list-style: none;
+}
+.county-network li { min-width: 0; }
+.county-network-node {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 7px;
+  width: 100%;
+  height: 100%;
+  min-height: 54px;
+  padding: 10px;
+  border: 0;
+  background: #faf6eb;
+  color: #263b34;
+  font-size: 14px;
+  text-align: left;
+}
+.county-network-node[aria-pressed="true"] { background: #e7eadd; box-shadow: inset 3px 0 #263b34; }
+.county-network-node:hover { background: #f0e9dc; }
+.county-network-node > span:first-child { overflow-wrap: anywhere; }
+@media (max-width: 750px) {
+  .county-mark .county-name { font-size: 26px; }
+  .county-mark .county-stage { font-size: 18px; }
+  .county-network { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .county-boundary { transition: none; }
+}
+
