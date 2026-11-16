@@ -194,7 +194,7 @@ function provinceOverview(key) {
   const tasks = state.tasks.filter(task => task.province === key);
   const counts = realmFacts(tasks);
   const priority = {approval: 0, handling: 1, waiting: 2, settled: 3};
-  const focus = [...tasks].sort((a,b) => priority[realmStatusKey(a)] - priority[realmStatusKey(b)]);
+  const focus = [...tasks].toSorted((a,b) => priority[realmStatusKey(a)] - priority[realmStatusKey(b)]);
   return '<nav class="realm-crumbs" aria-label="版图层级"><a href="#atlas">王朝总图</a>' + icon('next') +
     '<span aria-current="page">' + esc(province.name + '省') + '</span></nav>' +
     realmHeader(province.name + '省',prefectures.length + ' 府州 · ' + counts.total + ' 县',

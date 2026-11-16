@@ -78,8 +78,13 @@ function note(message) {
   timer = setTimeout(() => { announcement.textContent = ''; }, 2800);
 }
 
+function cleanSegment(value) {
+  try { value = decodeURIComponent(value); } catch { return ''; }
+  return /^[a-z0-9_.~-]*$/i.test(value) ? value : '';
+}
+
 function route() {
-  const [page,id,segment,caseId] = (location.hash.slice(1) || 'center').split('/');
+  const [page,id,segment,caseId] = (location.hash.slice(1) || 'center').split('/').map(cleanSegment);
   return {page:Object.hasOwn(pageNames,page) ? page : 'center',id,segment,caseId};
 }
 
